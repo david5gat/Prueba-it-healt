@@ -1,0 +1,43 @@
+
+<input type="text" [(ngModel)]="valorId" style="width: 100%;" pInputText  />
+<button pButton (click)="buscarUsuario(valorId)">
+  <i class="pi pi-check"></i>
+  <span>Buscar Usuario por Id</span>
+</button>
+
+<br>
+<br>
+
+<button pButton (click)="dialogVisible= true">
+  <i class="pi pi-plus"></i>
+  <span>Agregar Usuario</span>
+</button>
+
+
+<div class="card">
+    <p-table 
+    [value]="usuarios" 
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="5">
+        <ng-template #header>
+            <tr>
+                <th>{{'nombre' | titlecase}}</th>
+                <th>{{'correo' | titlecase}}</th>
+                <th>{{'telefono' | titlecase}}</th>
+                <th>{{'dirreccion' | titlecase}}</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-usuario>
+            <tr>
+                <td>{{ usuario.name }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.phone }}</td>
+                <td>{{ usuario.address.street }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<app-form (Dnotvisible)="dialogVisible = $event" [Dvisible]="dialogVisible"></app-form>
