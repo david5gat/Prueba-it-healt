@@ -3,6 +3,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-form',
   imports: [DialogModule, ButtonModule, FormsModule, ReactiveFormsModule],
@@ -36,7 +37,11 @@ export class Form implements OnInit {
 
   usuarioNuevo(){
 
+    Swal.fire({
+      title: 'Usuario enviado',
+      timer: 2000
+    });
+    this.cambioDialog()
     this.usuarioServ.postUsuario({...this.formUsuario.value})
-    
   }
 }
